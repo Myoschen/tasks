@@ -1,8 +1,6 @@
 # 🗒️ tasks
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/willy14620/todo_app/Build-and-Deploy?style=flat-square)
-![GitHub deployments](https://img.shields.io/github/deployments/willy14620/todo_app/github-pages?label=gh-pages&style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/willy14620/todo_app?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/willy14620/tasks?style=flat-square)
 
 > Build a task app with React, Redux, TypeScript, Tailwind CSS.
 
@@ -32,3 +30,5 @@ npm run start
 - [ ] Redux, Router
 - [ ] Store data with firebase
 - [ ] Use firebase authentication to make login and registration pages
+
+## The project is built with [create-react-app](https://github.com/facebook/create-react-app)
