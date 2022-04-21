@@ -11,7 +11,7 @@
 git clone https://github.com/willy14620/tasks.git
 
 # Install dependencies
-yarn install
+npm install
 ```
 
 ## Usage
@@ -26,8 +26,8 @@ npm run start
 
 ## Todo
 
-- [ ] Design UI
-- [ ] Redux, Router
+- [ ] Design mobile, tablet and desktop UI
+- [ ] Manage state with Redux, and manage route with React Router
 - [ ] Store data with firebase
 - [ ] Use firebase authentication to make login and registration pages
 
