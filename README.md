@@ -28,7 +28,8 @@ npm run start
 
 - [ ] Design mobile, tablet and desktop UI
 - [ ] Manage state with Redux, and manage route with React Router
-- [ ] Store data with firebase
 - [ ] Use firebase authentication to make login and registration pages
+- [ ] Store data with firebase
+- [ ] Drag and Drop with react-dnd or react-beautiful-dnd
 
 ## The project is built with [create-react-app](https://github.com/facebook/create-react-app)
