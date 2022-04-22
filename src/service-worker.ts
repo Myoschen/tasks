@@ -1,6 +1,3 @@
-/* eslint-disable prefer-regex-literals */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-undef */
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
 
