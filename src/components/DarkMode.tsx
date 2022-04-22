@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MdModeNight, MdLightMode } from 'react-icons/md';
 
-function DarkSwitcher() {
+function DarkMode() {
   const [dark, setDark] = useState(false);
 
   const handleClick = () => {
@@ -15,4 +15,4 @@ function DarkSwitcher() {
   );
 }
 
-export default DarkSwitcher;
+export default DarkMode;
