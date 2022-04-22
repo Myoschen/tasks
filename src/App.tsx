@@ -8,10 +8,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/all" element={<HomePage />} />
-        <Route path="/completed" element={<HomePage />} />
-        <Route path="/in-progress" element={<HomePage />} />
+        <Route path="/tasks" element={<HomePage />} />
+        <Route path="/tasks/all" element={<HomePage />} />
+        <Route path="/tasks/completed" element={<HomePage />} />
+        <Route path="/tasks/in-progress" element={<HomePage />} />
       </Routes>
     </Router>
   );
