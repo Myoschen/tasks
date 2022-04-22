@@ -3,7 +3,7 @@ import {
   MdList, MdDoneAll, MdPending, MdLogout, MdArrowForwardIos,
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
-import userAvatar from '../assets/User.png';
+import userAvatar from '../assets/user-default.png';
 import DarkMode from './DarkMode';
 
 function Sidebar() {
