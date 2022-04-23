@@ -2,6 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router, Routes, Route,
 } from 'react-router-dom';
+import Content from './components/Content';
+import DashboardPage from './pages/DashboardPage';
 import HomePage from './pages/HomePage';
 
 function App() {
@@ -9,9 +11,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/tasks" element={<HomePage />} />
-        <Route path="/tasks/all" element={<HomePage />} />
-        <Route path="/tasks/completed" element={<HomePage />} />
-        <Route path="/tasks/in-progress" element={<HomePage />} />
+        <Route path="/tasks/dashboard" element={<DashboardPage />}>
+          <Route path="all" element={<Content title="All" />} />
+          <Route path="completed" element={<Content title="Completed" />} />
+          <Route path="in-progress" element={<Content title="In Progress" />} />
+        </Route>
       </Routes>
     </Router>
   );
