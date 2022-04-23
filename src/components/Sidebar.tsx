@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  MdList, MdDoneAll, MdPending, MdLogout, MdArrowForwardIos,
+  MdList, MdDoneAll, MdPending, MdLogout, MdArrowForwardIos, MdSettings,
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import userAvatar from '../assets/user-default.png';
@@ -20,12 +20,11 @@ function Sidebar() {
         <h1 className={`${!open && 'hidden'} flex-1 text-xl text-white font-bold`}>
           Username
         </h1>
-        <button type="button" className={`${!open && 'hidden'} p-2 font-medium text-white duration-300 hover:text-nord-300`}>
-          <MdLogout size={24} />
-        </button>
+        {/* TODO Go to Profile */}
       </div>
+      <div className="h-[1px] w-full bg-nord-100 my-6" />
       <div className="flex flex-col justify-between h-full">
-        <ul className="pt-6 space-y-2">
+        <ul className="space-y-2 ">
           <li>
             <NavLink to="all" className={({ isActive }) => `${isActive && 'bg-nord-300'} link group`}>
               <MdList size={24} className="shrink-0" />
@@ -48,9 +47,21 @@ function Sidebar() {
             </NavLink>
           </li>
         </ul>
-        <ul className="flex mb-10">
-          <li className="p-2 text-white duration-300 rounded-md hover:bg-nord-300 text-[0px]">
+        <ul className="flex justify-between mb-20">
+          <li className="link group">
             <DarkMode />
+            <span className={`tooltip ${open && 'hidden'}`}>Darkmode</span>
+          </li>
+          <li>
+            <button type="button" className={`${!open && 'hidden'} link`}>
+              <MdSettings size={24} className="shrink-0" />
+            </button>
+          </li>
+          <li>
+            <button type="button" className={`${!open && 'hidden'} link group`}>
+              <MdLogout size={24} className="shrink-0" />
+              <span className="tooltip">Logout</span>
+            </button>
           </li>
         </ul>
       </div>
