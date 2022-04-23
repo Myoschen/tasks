@@ -9,7 +9,7 @@ const FakeTaskList: Task[] = [
 
 function TaskList() {
   return (
-    <ul className="flex flex-col items-start pl-5 gap-y-4 border-nord-500">
+    <ul className="flex flex-col w-full pl-5 gap-y-4 border-nord-500">
       {FakeTaskList.map((task) => (
         <Task task={task} key={task.id} />
       ))}

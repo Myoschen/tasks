@@ -13,9 +13,7 @@ function Content(props: Props) {
         <h1 className="mb-16 text-6xl font-bold">
           {title}
         </h1>
-        <div>
-          <TaskList />
-        </div>
+        <TaskList />
       </div>
     </main>
   );
