@@ -14,7 +14,7 @@ function Sidebar() {
   };
 
   return (
-    <div className={`${open ? 'w-72' : 'w-20'} duration-500 h-screen z-0 relative p-5 pt-8 transform shadow-2xl bg-nord-500`}>
+    <div className={`${open ? 'w-72' : 'w-20'} duration-500 h-screen z-0 relative p-5 pt-8 transform shadow-lg shadow-nord-700 bg-nord-500`}>
       <div className="flex items-center space-x-4">
         <img src={userAvatar} className="w-10 rounded-full" alt="user-avatar" />
         <h1 className={`${!open && 'hidden'} flex-1 text-xl text-white font-bold`}>
@@ -27,21 +27,24 @@ function Sidebar() {
       <div className="flex flex-col justify-between h-full">
         <ul className="pt-6 space-y-2">
           <li>
-            <NavLink to="/all" className={({ isActive }) => `${isActive && 'bg-nord-300'} flex items-center p-2 text-white duration-300 rounded-md gap-x-4 hover:bg-nord-300`}>
+            <NavLink to="all" className={({ isActive }) => `${isActive && 'bg-nord-300'} link group`}>
               <MdList size={24} className="shrink-0" />
-              <span className={`${!open && 'hidden'} font-medium text-md  leading-tight whitespace-nowrap flex-grow`}>All</span>
+              <span className={`${!open && 'hidden'}`}>All</span>
+              <span className={`tooltip ${open && 'hidden'}`}>All</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/completed" className={({ isActive }) => `${isActive && 'bg-nord-300'} flex items-center p-2 text-white duration-300 rounded-md gap-x-4 hover:bg-nord-300`}>
+            <NavLink to="completed" className={({ isActive }) => `${isActive && 'bg-nord-300'} link group`}>
               <MdDoneAll size={24} className="shrink-0" />
-              <span className={`${!open && 'hidden'} font-medium text-md  whitespace-nowrap flex-grow`}>Completed</span>
+              <span className={`${!open && 'hidden'}`}>Completed</span>
+              <span className={`tooltip ${open && 'hidden'}`}>Completed</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/in-progress" className={({ isActive }) => `${isActive && 'bg-nord-300'} flex items-center p-2 text-white duration-300 rounded-md gap-x-4 hover:bg-nord-300`}>
+            <NavLink to="in-progress" className={({ isActive }) => `${isActive && 'bg-nord-300'} link group`}>
               <MdPending size={24} className="shrink-0" />
-              <span className={`${!open && 'hidden'} font-medium text-md  whitespace-nowrap flex-grow`}>In Progress</span>
+              <span className={`${!open && 'hidden'}`}>In Progress</span>
+              <span className={`tooltip ${open && 'hidden'}`}>In Progress</span>
             </NavLink>
           </li>
         </ul>
@@ -51,7 +54,7 @@ function Sidebar() {
           </li>
         </ul>
       </div>
-      <button type="button" onClick={handleOpen} className="absolute z-50 p-2 text-lg text-white duration-300 rounded-full bg-nord-700 top-1/2 -right-4 hover:ring hover:ring-nord-500">
+      <button type="button" onClick={handleOpen} className="absolute z-50 p-2 text-lg text-white duration-300 rounded-full bg-nord-500 top-1/2 -right-4">
         <MdArrowForwardIos className={`${open && 'rotate-180'} transform duration-300`} />
       </button>
     </div>
