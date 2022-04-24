@@ -31,6 +31,9 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'react/require-default-props': 0,
+    'react/jsx-uses-react': 0,
+    'react/react-in-jsx-scope': 0,
   },
   settings: {
     'import/resolver': {
