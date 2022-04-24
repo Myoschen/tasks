@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   MdDone, MdDelete, MdModeEdit, MdDragIndicator,
 } from 'react-icons/md';
