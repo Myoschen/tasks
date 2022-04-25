@@ -34,6 +34,8 @@ module.exports = {
     'react/require-default-props': 0,
     'react/jsx-uses-react': 0,
     'react/react-in-jsx-scope': 0,
+    indent: 'off',
+    '@typescript-eslint/indent': ['error', 2],
   },
   settings: {
     'import/resolver': {
