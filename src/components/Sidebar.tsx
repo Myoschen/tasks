@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {
-  MdList, MdDoneAll, MdPending, MdLogout, MdArrowForwardIos, MdSettings,
+  MdList, MdDoneAll, MdPending, MdLogout, MdArrowForwardIos,
 } from 'react-icons/md';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import userAvatar from '../assets/user-default.png';
 import DarkMode from './DarkMode';
 
@@ -26,6 +26,7 @@ const navItems = [
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className={`${open ? 'w-72' : 'w-20'} duration-500 h-screen z-0 relative p-5 pt-8 transform shadow-lg shadow-nord-700 bg-nord-500`}>
@@ -60,7 +61,7 @@ function Sidebar() {
             </DarkMode>
           </li>
           <li>
-            <button type="button" className="w-full text-left link group">
+            <button type="button" className="w-full text-left link group" onClick={() => navigate('/tasks/')}>
               <MdLogout size={24} className="shrink-0" />
               <span className={`${!open && 'hidden'}`}>Logout</span>
               <span className={`tooltip ${open && 'hidden'}`}>Logout</span>

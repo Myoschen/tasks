@@ -1,5 +1,6 @@
-import { useState, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { MdModeNight, MdLightMode } from 'react-icons/md';
+import useDarkMode from '../hooks/useDarkMode';
 
 interface Props {
   styles?: string;
@@ -8,15 +9,21 @@ interface Props {
 
 function DarkMode(props: Props) {
   const { styles, children } = props;
-  const [dark, setDark] = useState(false);
+  const [theme, setTheme] = useDarkMode();
 
   const handleClick = () => {
-    setDark((state) => !state);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <button className={styles || 'p-2 rounded-md hover:bg-nord-300 duration-300'} type="button" onClick={handleClick}>
-      {dark ? <MdModeNight size={24} className="shrink-0" /> : <MdLightMode size={24} className="shrink-0" />}
+    <button
+      type="button"
+      className={styles || 'p-2 rounded-md hover:bg-nord-300 duration-300'}
+      onClick={handleClick}
+    >
+      {theme === 'dark'
+        ? <MdLightMode size={24} className="shrink-0" />
+        : <MdModeNight size={24} className="shrink-0" />}
       {children}
     </button>
   );
