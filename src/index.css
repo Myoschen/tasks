@@ -10,11 +10,20 @@
     @apply before:w-2 before:h-2 before:rotate-45 before:absolute before:top-1/2 before:-left-1 before:-translate-y-1/2 before:content-[''] before:bg-cherrystone-500 -z-10;
   }
 
-  .link {
-    @apply flex items-center p-2 text-white duration-300 rounded-md gap-x-4 hover:bg-nord-300 relative z-50;
+  .nav__item {
+    /* Common */
+    @apply flex items-center p-2 rounded-md gap-x-2 relative duration-300;
+    /* Light */
+    @apply bg-nord-100 text-nord-600 hover:bg-nord-300;
+    /* Dark */
+    @apply dark:bg-nord-600 dark:text-nord-100 dark:hover:bg-nord-300;
   }
 
-  .link > span:nth-of-type(1) {
+  .nav__item > span:nth-of-type(1) {
     @apply font-medium whitespace-nowrap flex-grow;
+  }
+
+  .external-link {
+    @apply text-base hover:text-cherrystone-600 hover:underline underline-offset-2 flex items-center gap-x-1;
   }
 }
