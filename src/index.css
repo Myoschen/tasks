@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-  /* You need to add 'group' to parent node */
-  .tooltip {
-    @apply duration-300 delay-100 bg-cherrystone-500 font-bold text-sm px-2 py-1 whitespace-nowrap pointer-events-none group-hover:opacity-100 opacity-0 rounded-sm absolute left-[4.5rem] z-10;
-    /* Direction */
-    @apply before:w-2 before:h-2 before:rotate-45 before:absolute before:top-1/2 before:-left-1 before:-translate-y-1/2 before:content-[''] before:bg-cherrystone-500 -z-10;
+  /* Basic */
+  .button {
+    @apply p-2 text-lg font-bold rounded-md;
+    /* Colors */
+    @apply bg-nord-700 dark:bg-gray-200 text-nord-100 dark:text-nord-600;
+    /* hover and active */
+    @apply hover:bg-nord-500 dark:hover:bg-gray-400 active:ring-2 active:ring-blue-300 transition-colors;
   }
 
   .nav__item {
@@ -23,7 +25,31 @@
     @apply font-medium whitespace-nowrap flex-grow;
   }
 
+  /* You need to add 'group' to parent node */
+  .tooltip {
+    @apply duration-300 delay-100 bg-cherrystone-500 font-bold text-sm px-2 py-1 whitespace-nowrap pointer-events-none group-hover:opacity-100 opacity-0 rounded-sm absolute left-[4.5rem] z-10;
+    /* Direction */
+    @apply before:w-2 before:h-2 before:rotate-45 before:absolute before:top-1/2 before:-left-1 before:-translate-y-1/2 before:content-[''] before:bg-cherrystone-500 -z-10;
+  }
+
   .external-link {
     @apply text-base hover:text-cherrystone-600 hover:underline underline-offset-2 flex items-center gap-x-1;
+  }
+
+  /* Form */
+  .form-label {
+    @apply flex flex-col gap-y-2;
+  }
+
+  .form-label > span {
+    @apply text-lg tracking-wider;
+  }
+
+  .form-input {
+    @apply px-4 py-2 text-lg rounded-md tracking-wider;
+    /* Colors */
+    @apply text-nord-600;
+    /* Events */
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-300;
   }
 }
