@@ -1,39 +1,13 @@
 import { Link } from 'react-router-dom';
-import { MdLogin, MdPersonAdd } from 'react-icons/md';
+import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
-import tasksIcon from '../assets/tasks.png';
-import DarkMode from '../components/DarkMode';
-
-const navItem = [
-  {
-    label: 'Login',
-    icon: (<MdLogin size={24} className="shrink-0" />),
-  },
-  {
-    label: 'Register',
-    icon: (<MdPersonAdd size={24} className="shrink-0" />),
-  },
-];
 
 function HomePage() {
   return (
     <>
       {/* Navbar */}
-      <Navbar
-        icon={tasksIcon}
-        name="Tasks"
-      >
-        {navItem.map((item) => (
-          <li key={item.label}>
-            <button type="button" className="link">
-              {item.icon}
-              <span>{item.label}</span>
-            </button>
-          </li>
-        ))}
-        <DarkMode />
-      </Navbar>
+      <Navbar />
 
       {/* Hero */}
       <Hero title="Hello !">
@@ -41,6 +15,9 @@ function HomePage() {
           Get Started
         </Link>
       </Hero>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
