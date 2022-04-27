@@ -3,21 +3,26 @@ import { createPortal } from 'react-dom';
 import { XIcon } from '@heroicons/react/solid';
 
 interface ModalProps {
+  title: string;
   isOpen: boolean;
   close: () => void;
   children: ReactNode;
 }
 
-function Modal({ isOpen, close, children }: ModalProps) {
+function Modal({
+  title, isOpen, close, children,
+}: ModalProps) {
   const modal = (
     <div id="modal">
-      <div id="overlay" className="fixed top-0 left-0 z-40 w-full h-full bg-black/50" />
-      <div id="content-wrapper" className="fixed z-50 max-w-lg p-6 -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-md shadow-xl top-1/2 left-1/2 dark:bg-nord-700 text-nord-600 dark:text-nord-100">
+      <div id="overlay" className="fixed top-0 left-0 z-40 w-full h-full bg-black/50" onMouseDown={close} aria-hidden />
+      <div id="content-wrapper" className="fixed z-50 sm:min-w-[480px] p-6 -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-md shadow-xl top-1/2 left-1/2 dark:bg-nord-700 text-nord-600 dark:text-nord-100">
         <button className="absolute text-red-500 right-4" type="button" onClick={close}>
-          <XIcon className="w-4" />
+          <XIcon className="w-6" />
         </button>
-        <h1 className="text-4xl font-bold text-center">Login</h1>
-        {children}
+        <div className="p-2">
+          <h1 className="text-4xl font-bold text-center">{title}</h1>
+          {children}
+        </div>
       </div>
     </div>
   );
