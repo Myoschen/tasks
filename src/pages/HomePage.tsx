@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
@@ -10,10 +9,15 @@ function HomePage() {
       <Navbar />
 
       {/* Hero */}
-      <Hero title="Hello !">
-        <Link className="p-2 text-lg font-medium text-white rounded-md bg-nord-500" to="/tasks/dashboard">
-          Get Started
-        </Link>
+      <Hero title="HELLO">
+        <div className="space-x-4">
+          <a className="button" target="_blank" href="https://github.com/Myoschen/tasks" rel="noreferrer">
+            Documentation
+          </a>
+          <a className="button" target="_blank" href="https://twitter.com/willy14620" rel="noreferrer">
+            Twitter
+          </a>
+        </div>
       </Hero>
 
       {/* Footer */}
