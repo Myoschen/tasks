@@ -28,8 +28,8 @@ npm run start
 
 ## Todo
 
+- [x] Implement darkmode
 - [ ] Design mobile, tablet and desktop UI
-- [ ] Implement darkmode
 - [ ] Manage state with Redux and manage route with React Router
 - [ ] Use firebase authentication to make login and registration pages
 - [ ] Store data with firebase
