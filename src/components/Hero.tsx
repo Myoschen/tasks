@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 
-interface Props {
+interface HeroProps {
   title: string;
   children?: ReactNode;
 }
 
-function Hero({ title, children }: Props) {
+function Hero({ title, children }: HeroProps) {
   return (
     <div className="flex items-center relative h1 h-[calc(100vh-4.5rem)] bg-hero-pattern bg-no-repeat bg-cover bg-center">
       <div className="absolute w-full h-full pointer-events-none backdrop-blur-sm" />

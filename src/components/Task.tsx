@@ -1,28 +1,23 @@
-import {
-  MdDone, MdDelete, MdModeEdit, MdDragIndicator,
-} from 'react-icons/md';
+import { XCircleIcon, PencilIcon, HashtagIcon } from '@heroicons/react/solid';
 
-interface Props {
+interface TaskProps {
   task: Task;
 }
 
-function Task(props: Props) {
+function Task(props: TaskProps) {
   const { task } = props;
   return (
     <li className="flex items-center justify-between max-w-sm p-4 text-xl font-medium rounded-md bg-nord-200">
       <button type="button">
-        <MdDragIndicator />
+        <HashtagIcon className="w-6" />
       </button>
       <span>{task.content}</span>
-      <div className="space-x-2">
+      <div className="flex items-center gap-x-2">
         <button type="button">
-          <MdDone />
+          <PencilIcon className="w-6" />
         </button>
         <button type="button">
-          <MdModeEdit />
-        </button>
-        <button type="button">
-          <MdDelete />
+          <XCircleIcon className="w-6" />
         </button>
       </div>
     </li>

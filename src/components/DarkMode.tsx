@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
-import { MdModeNight, MdLightMode } from 'react-icons/md';
+import { SunIcon, MoonIcon } from '@heroicons/react/solid';
 import useDarkMode from '../hooks/useDarkMode';
 
-interface Props {
+interface DarkModeProps {
   styles?: string;
   children?: ReactNode;
 }
 
-function DarkMode(props: Props) {
+function DarkMode(props: DarkModeProps) {
   const { styles, children } = props;
   const [theme, setTheme] = useDarkMode();
 
@@ -18,12 +18,12 @@ function DarkMode(props: Props) {
   return (
     <button
       type="button"
-      className={styles || 'p-2 rounded-md hover:bg-nord-300 duration-300'}
+      className={styles || 'p-2 rounded-md duration-300 bg-nord-100 text-nord-600 hover:bg-nord-300 dark:bg-nord-600 dark:text-nord-100 dark:hover:bg-nord-300'}
       onClick={handleClick}
     >
       {theme === 'dark'
-        ? <MdLightMode size={24} className="shrink-0" />
-        : <MdModeNight size={24} className="shrink-0" />}
+        ? <SunIcon className="w-6 shrink-0" />
+        : <MoonIcon className="w-6 shrink-0" />}
       {children}
     </button>
   );
