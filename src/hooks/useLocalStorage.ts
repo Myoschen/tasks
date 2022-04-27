@@ -1,34 +1,38 @@
 import {
-  useState, useEffect, Dispatch, SetStateAction,
+  useState,
 } from 'react';
 
-// 函式回傳值型別
 type ReturnType<T> = [
-  T | undefined,
-  Dispatch<SetStateAction<T>>,
+  T,
+  (value: T | ((val: T) => T)) => void
 ]
 
 const useLocalStorage = <T, >(key: string, initialValue?: T): ReturnType<T> => {
-  const [state, setState] = useState(() => {
+  const [state, setState] = useState<T>(() => {
     try {
-      const value = window.localStorage.getItem(key);
-      return value ? JSON.parse(value) : initialValue;
+      // Get value from local storage
+      const valueOfLocalStorage = window.localStorage.getItem(key);
+      return valueOfLocalStorage ? JSON.parse(valueOfLocalStorage) : initialValue;
     } catch (error) {
+      console.log(error);
       return initialValue;
     }
   });
 
-  useEffect(() => {
-    if (state) {
-      try {
-        window.localStorage.setItem(key, JSON.stringify(state));
-      } catch (error) {
-        console.log(error);
-      }
+  const setValue = (value: T | ((val: T) => T)) => {
+    try {
+      // Determine whether it is a function
+      const valueToLocalStorage = value instanceof Function ? value(state) : value;
+      // Save to state
+      setState(valueToLocalStorage);
+      // Save to local storage
+      window.localStorage.setItem(key, JSON.stringify(valueToLocalStorage));
+    } catch (error) {
+      console.log(error);
     }
-  }, [state, key]);
+  };
 
-  return [state, setState];
+  return [state, setValue];
 };
 
 export default useLocalStorage;
