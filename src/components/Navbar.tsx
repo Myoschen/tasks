@@ -1,14 +1,16 @@
-import { LoginIcon, MenuIcon } from '@heroicons/react/solid';
+import { MouseEvent } from 'react';
+import { LoginIcon, MenuIcon, UserAddIcon } from '@heroicons/react/solid';
 import tasksIcon from '../assets/tasks.png';
 import DarkMode from './DarkMode';
 import Modal from './Modal';
 import useToggle from '../hooks/useToggle';
 import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import SignUpForm from './SignUpForm';
 
 function Navbar() {
   const [isNavbarOpen, setIsNavbarOpen] = useToggle();
-  const [isModalOpen, setIsModalOpen] = useToggle();
+  const [isLoginOpen, setIsLoginOpen] = useToggle();
+  const [isSignUpOpen, setIsSignUpOpen] = useToggle();
 
   return (
     <>
@@ -20,9 +22,15 @@ function Navbar() {
           </div>
           <ul className="flex gap-x-2">
             <li>
-              <button type="button" className="nav__item" onClick={setIsModalOpen}>
+              <button type="button" className="nav__item" onClick={setIsLoginOpen}>
                 <LoginIcon className="w-6" />
                 <span>Login</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" className="nav__item" onClick={setIsSignUpOpen}>
+                <UserAddIcon className="w-6" />
+                <span>Sign Up</span>
               </button>
             </li>
             <li>
@@ -39,12 +47,12 @@ function Navbar() {
       </nav>
 
       {/* Modal */}
-      <Modal isOpen={isModalOpen} close={setIsModalOpen}>
+      <Modal title="Login" isOpen={isLoginOpen} close={setIsLoginOpen}>
         <LoginForm />
       </Modal>
-      {/* <Modal isOpen={isModalOpen} close={setIsModalOpen}>
-        <SignupForm />
-      </Modal> */}
+      <Modal title="Sign up" isOpen={isSignUpOpen} close={setIsSignUpOpen}>
+        <SignUpForm />
+      </Modal>
     </>
   );
 }
