@@ -2,6 +2,10 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
+    debugScreens: {
+      position: ['bottom', 'left'],
+      selector: '.debug-screens',
+    },
     extend: {
       backgroundImage: {
         'hero-pattern': "url('./assets/hero.jpg')",
@@ -32,5 +36,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-debug-screens')],
 };
