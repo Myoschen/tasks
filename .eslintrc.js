@@ -17,6 +17,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  ignorePatterns: ['tailwind.config.js'],
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'linebreak-style': ['error', 'windows'],
