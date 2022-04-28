@@ -2,7 +2,6 @@
   "name": "tasks",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://willy14620.github.io/tasks/",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.1",
@@ -20,6 +19,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "sweetalert2": "^11.4.9",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.5.3",
@@ -68,6 +68,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "tailwindcss-debug-screens": "^2.2.1"
   }
 }
