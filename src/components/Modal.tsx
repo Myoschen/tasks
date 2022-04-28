@@ -3,14 +3,13 @@ import { createPortal } from 'react-dom';
 import { XIcon } from '@heroicons/react/solid';
 
 interface ModalProps {
-  title: string;
   isOpen: boolean;
   close: () => void;
   children: ReactNode;
 }
 
 function Modal({
-  title, isOpen, close, children,
+  isOpen, close, children,
 }: ModalProps) {
   const modal = (
     <div id="modal">
@@ -20,7 +19,6 @@ function Modal({
           <XIcon className="w-6" />
         </button>
         <div className="p-2">
-          <h1 className="text-4xl font-bold text-center">{title}</h1>
           {children}
         </div>
       </div>

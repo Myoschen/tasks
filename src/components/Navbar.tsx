@@ -1,16 +1,14 @@
-import { MouseEvent } from 'react';
 import { LoginIcon, MenuIcon, UserAddIcon } from '@heroicons/react/solid';
 import tasksIcon from '../assets/tasks.png';
 import DarkMode from './DarkMode';
 import Modal from './Modal';
 import useToggle from '../hooks/useToggle';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
+import Form from './Form';
 
 function Navbar() {
   const [isNavbarOpen, setIsNavbarOpen] = useToggle();
   const [isLoginOpen, setIsLoginOpen] = useToggle();
-  const [isSignUpOpen, setIsSignUpOpen] = useToggle();
+  const [isLogin, setIsLogin] = useToggle(true);
 
   return (
     <>
@@ -28,12 +26,6 @@ function Navbar() {
               </button>
             </li>
             <li>
-              <button type="button" className="nav__item" onClick={setIsSignUpOpen}>
-                <UserAddIcon className="w-6" />
-                <span>Sign Up</span>
-              </button>
-            </li>
-            <li>
               <DarkMode />
             </li>
           </ul>
@@ -47,11 +39,11 @@ function Navbar() {
       </nav>
 
       {/* Modal */}
-      <Modal title="Login" isOpen={isLoginOpen} close={setIsLoginOpen}>
-        <LoginForm />
-      </Modal>
-      <Modal title="Sign up" isOpen={isSignUpOpen} close={setIsSignUpOpen}>
-        <SignUpForm />
+      <Modal isOpen={isLoginOpen} close={setIsLoginOpen}>
+        <h1 className="text-4xl font-bold text-center">
+          {isLogin ? 'Login' : 'Register'}
+        </h1>
+        <Form isLogin={isLogin} handleIsLogin={setIsLogin} />
       </Modal>
     </>
   );
