@@ -29,10 +29,11 @@ npm run start
 ## Todo
 
 - [x] Implement darkmode
-- [ ] Design mobile, tablet and desktop UI
+- [x] Use firebase authentication to make login and registration pages
 - [ ] Manage state with Redux and manage route with React Router
-- [ ] Use firebase authentication to make login and registration pages
 - [ ] Store data with firebase
+- [ ] Design mobile, tablet and desktop UI
+- [ ] Validate Form by Formik, Yup.
 - [ ] Drag and Drop with react-dnd or react-beautiful-dnd
 
 ## The project is built with [create-react-app](https://github.com/facebook/create-react-app)
