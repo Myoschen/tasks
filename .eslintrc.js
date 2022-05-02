@@ -37,6 +37,12 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2],
+    'no-param-reassign': ['error', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'state',
+      ],
+    }],
   },
   settings: {
     'import/resolver': {
