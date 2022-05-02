@@ -1,15 +1,18 @@
 import {
-  useState, useEffect, MouseEvent, ChangeEvent,
+  useState, MouseEvent, ChangeEvent,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged,
-  User,
-} from 'firebase/auth';
-import { useAppDispatch, setActiveUser } from '../slices';
-import { auth } from '../firebase';
+
+// components
+import SubmitButton from './Button/SubmitButton';
+
+// utils
 import { Toast } from '../utils/Notifications';
 import ErrorHandler from '../firebase/error';
+
+// redux
+import { useAppDispatch } from '../slices';
+import { login, register } from '../slices/auth/async';
 
 interface FormProps {
   isLogin: boolean;
@@ -19,7 +22,7 @@ interface FormProps {
 function Form({ isLogin, handleIsLogin }: FormProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [user, setUser] = useState<IUser>({
+  const [user, setUser] = useState<UserLoginOrRegister>({
     username: '',
     email: '',
     password: '',
@@ -35,29 +38,43 @@ function Form({ isLogin, handleIsLogin }: FormProps) {
   // Handle user login
   const handleLogin = async () => {
     if (user.email && user.password) {
-      await signInWithEmailAndPassword(auth, user.email, user.password)
-        .then(() => {
-          Toast.fire({ icon: 'success', titleText: 'Login Successful.' });
-        }).catch((error: Error) => {
-          const resMsg = ErrorHandler(error.message);
-          Toast.fire({ icon: 'error', titleText: resMsg });
+      const userData = {
+        email: user.email,
+        password: user.password,
+      };
+      dispatch(login(userData))
+        .unwrap()
+        .then((res) => {
+          Toast.fire({ icon: 'success', title: res.message });
+          navigate('/dashboard');
+        })
+        .catch((errorMessage: string) => {
+          const msg = ErrorHandler(errorMessage);
+          Toast.fire({ icon: 'error', title: msg });
         });
     } else {
-      Toast.fire({ icon: 'question', titleText: 'Your email or password is wrong or empty.' });
+      Toast.fire({ icon: 'question', title: 'Your email or password is wrong or empty.' });
     }
   };
 
   // Handle user register
   const handleRegister = async () => {
     if (user.username && user.email && user.password) {
-      const userDetails = await createUserWithEmailAndPassword(auth, user.email, user.password)
-        .then((userCredential) => userCredential.user)
-        .catch((error) => {
-          const resMsg = ErrorHandler(error.message);
-          Toast.fire({ icon: 'error', titleText: resMsg });
-        }) as User;
-      await updateProfile(userDetails, { displayName: user.username })
-        .then(() => Toast.fire({ icon: 'success', titleText: 'Registration Successful.' }));
+      const userData = {
+        username: user.username,
+        email: user.email,
+        password: user.password,
+      };
+      dispatch(register(userData))
+        .unwrap()
+        .then((res) => {
+          Toast.fire({ icon: 'success', title: res.message });
+          navigate('/dashboard');
+        })
+        .catch((errorMessage: string) => {
+          const msg = ErrorHandler(errorMessage);
+          Toast.fire({ icon: 'error', title: msg });
+        });
     } else {
       Toast.fire({ icon: 'question', titleText: 'Your username, email or password is wrong or empty.' });
     }
@@ -73,42 +90,54 @@ function Form({ isLogin, handleIsLogin }: FormProps) {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (userDetails) => {
-      console.log(userDetails);
-      if (userDetails !== null) {
-        const displayName = userDetails.displayName || user.username;
-        dispatch(setActiveUser(
-          { userData: { username: displayName, email: userDetails?.email } },
-        ));
-        navigate('/dashboard');
-      }
-    });
-    return () => unsubscribe();
-  }, [dispatch, navigate, user.username]);
-
   return (
     <form className="flex flex-col p-6 mt-6 gap-y-6">
       {!isLogin && (
-        <label className="form-label" htmlFor="username">
-          <span>Username</span>
-          <input id="username" className="form-input" type="text" name="username" onChange={handleChange} />
+        <label className="flex flex-col gap-y-2" htmlFor="username">
+          <span className="text-lg tracking-wider">Username</span>
+          <input
+            id="username"
+            className="px-4 py-2 text-lg tracking-wider rounded-md text-nord-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            type="text"
+            name="username"
+            onChange={handleChange}
+          />
         </label>
       )}
-      <label className="form-label" htmlFor="email">
-        <span>Email</span>
-        <input id="email" className="form-input" type="email" name="email" onChange={handleChange} />
+      <label className="flex flex-col gap-y-2" htmlFor="email">
+        <span className="text-lg tracking-wider">Email</span>
+        <input
+          id="email"
+          className="px-4 py-2 text-lg tracking-wider rounded-md text-nord-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          type="email"
+          name="email"
+          onChange={handleChange}
+        />
       </label>
-      <label className="form-label" htmlFor="password">
-        <span>Password</span>
-        <input id="password" className="form-input" type="password" name="password" onChange={handleChange} />
+      <label className="flex flex-col gap-y-2" htmlFor="password">
+        <span className="text-lg tracking-wider">
+          Password
+          {
+            isLogin
+          && <button type="button" className="ml-2 text-sm font-semibold text-gray-400">Forgot password ?</button>
+          }
+        </span>
+        <input
+          id="password"
+          className="px-4 py-2 text-lg tracking-wider rounded-md text-nord-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          type="password"
+          name="password"
+          onChange={handleChange}
+        />
       </label>
-      <button className="mt-2 button" type="submit" onClick={handleSubmit}>Submit</button>
+      <SubmitButton className="mt-2" handleClick={handleSubmit}>Submit</SubmitButton>
       <div className="flex justify-center mt-2 gap-x-2">
-        <span>New member ?</span>
-        <button type="button" className="font-bold hover:text-cherrystone-600" onClick={handleIsLogin}>
-          {isLogin ? 'Register' : 'Login'}
-        </button>
+        <span>
+          {isLogin ? 'New user ?' : 'You already have a account ?'}
+          <button type="button" className="ml-2 font-bold hover:text-cherrystone-600" onClick={handleIsLogin}>
+            {isLogin ? 'Register' : 'Login'}
+          </button>
+        </span>
       </div>
     </form>
   );

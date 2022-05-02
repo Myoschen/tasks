@@ -5,13 +5,13 @@ function Footer() {
     <div className="p-8 duration-300 bg-gray-200 dark:bg-nord-700 text-nord-600 dark:text-nord-100">
       <div className="container mx-auto">
         {/* Item */}
-        <div className="space-y-6 md:flex md:space-y-0 md:justify-evenly">
+        <div className="flex flex-col items-start space-y-6 md:flex-row md:space-y-0 md:justify-evenly">
           <div>
             <span className="text-lg font-bold">Docs</span>
             <ul className="mt-2">
               <li>
                 <a
-                  className="external-link"
+                  className="flex items-center text-base hover:text-cherrystone-600 hover:underline underline-offset-2 gap-x-1"
                   href="https://github.com/Myoschen"
                 >
                   Github
@@ -25,7 +25,7 @@ function Footer() {
             <ul className="mt-2">
               <li>
                 <a
-                  className="external-link"
+                  className="flex items-center text-base hover:text-cherrystone-600 hover:underline underline-offset-2 gap-x-1"
                   href="mailto:willy14620@gmail.com"
                 >
                   Email
@@ -34,7 +34,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  className="external-link"
+                  className="flex items-center text-base hover:text-cherrystone-600 hover:underline underline-offset-2 gap-x-1"
                   href="https://discordapp.com/users/584313486901903372"
                 >
                   Discord

@@ -14,7 +14,6 @@ const useLocalStorage = <T, >(key: string, initialValue?: T): ReturnType<T> => {
       const valueOfLocalStorage = window.localStorage.getItem(key);
       return valueOfLocalStorage ? JSON.parse(valueOfLocalStorage) : initialValue;
     } catch (error) {
-      console.log(error);
       return initialValue;
     }
   });

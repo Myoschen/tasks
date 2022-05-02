@@ -1,9 +1,10 @@
-import { LoginIcon, MenuIcon, UserAddIcon } from '@heroicons/react/solid';
+import { LoginIcon, MenuIcon } from '@heroicons/react/solid';
 import tasksIcon from '../assets/tasks.png';
 import DarkMode from './DarkMode';
 import Modal from './Modal';
 import useToggle from '../hooks/useToggle';
 import Form from './Form';
+import NavItem from './NavItem';
 
 function Navbar() {
   const [isNavbarOpen, setIsNavbarOpen] = useToggle();
@@ -19,12 +20,14 @@ function Navbar() {
             <span className="text-2xl font-bold text-nord-600 dark:text-nord-100">Tasks</span>
           </div>
           <ul className="flex gap-x-2">
-            <li>
-              <button type="button" className="nav__item" onClick={setIsLoginOpen}>
-                <LoginIcon className="w-6" />
-                <span>Login</span>
-              </button>
-            </li>
+            <NavItem
+              as="button"
+              icon={<LoginIcon className="w-6" />}
+              label="Login"
+              handleClick={setIsLoginOpen}
+              isOpen
+              withTooltip={false}
+            />
             <li>
               <DarkMode />
             </li>

@@ -1,15 +1,7 @@
-interface Task {
-  id: string;
-  content: string;
-  completed: boolean;
-}
+// utility types
+type Nullable<T> = T | null;
 
-interface IUser {
-  username: string;
-  email: string;
-  password: string;
-}
-
+// function
 declare function assertIsError(error: unknown): asserts error is Error {
   // if you have nodejs assert:
   // assert(error instanceof Error);
@@ -19,6 +11,32 @@ declare function assertIsError(error: unknown): asserts error is Error {
   }
 }
 
-type RemoveReadOnlyProperty<T> = {
-  -readonly [K in keyof T]: T[K];
-};
+// interface
+
+interface ITask {
+  id: string;
+  content: string;
+  completed: boolean;
+}
+
+interface IUser {
+  username: string;
+  email: string;
+  emailVerified: boolean;
+  password: string;
+  photoURL: string;
+  creationTime: string;
+}
+
+// redux state
+interface UserState {
+  status: 'loading' | 'success' | 'error' | undefined;
+  user: Omit<IUser, 'password'> | undefined;
+  message: string | undefined;
+}
+
+interface TaskState {
+  taskList: ARray<ITask>;
+}
+
+type UserLoginOrRegister = Pick<IUser, 'username' | 'email' | 'password'>;

@@ -1,7 +1,7 @@
 import { XCircleIcon, PencilIcon, HashtagIcon } from '@heroicons/react/solid';
 
 interface TaskProps {
-  task: Task;
+  task: ITask;
 }
 
 function Task(props: TaskProps) {
